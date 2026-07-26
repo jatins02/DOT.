@@ -18,4 +18,4 @@ def download_playlist(playlist_url):
 
 
 # KIM to cd to proper dir, before downloading
-download_playlist("https://youtube.com/playlist?list=PLazTozPlnVQ-QBpOKEm406va_sqNcROew&si=r5gI9ghCkuOA9WbH")
+download_playlist("")
