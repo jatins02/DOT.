@@ -2,6 +2,7 @@ from groq import Groq
 from dotenv import load_dotenv
 from query_maker import query_maker
 import os
+import itertools
 
 load_dotenv()
 api_key = os.getenv("GROQ_API_KEY")
@@ -37,9 +38,10 @@ def name_formatter():
 
         answers.append(chat_completion.choices[0].message.content)
 
+    tmp = []
+    for batch in answers:
+        songs = batch.split('\n')
+        tmp.append(songs)
 
-    for ans in answers:
-        print(ans)
-
-
-name_formatter()
+    tmp = list(itertools.chain.from_iterable(tmp))
+    return tmp
