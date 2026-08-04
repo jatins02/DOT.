@@ -2,7 +2,6 @@ import customtkinter as ctk
 import pygame
 from name_formatter import name_formatter
 import os
-import sys
 
 class App(ctk.CTk):
     def __init__(self):
@@ -13,8 +12,9 @@ class App(ctk.CTk):
         self.click_timer = None
         self.initWindow()
         pygame.mixer.init()
-        script_dir = os.path.dirname(os.getcwd())
-        os.chdir(script_dir)
+        script_path = os.path.abspath(__file__)     # get the path of script
+        parent_dir = os.path.dirname(os.path.dirname(script_path))      # get parent of parent dir of script
+        os.chdir(parent_dir)
 
     def initWindow(self):
         self.entry = ctk.CTkEntry(self, placeholder_text="Enter YT playlist link", width=540)
