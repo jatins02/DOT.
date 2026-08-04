@@ -13,14 +13,17 @@ setting = """
 given is a list of songs title, and your vast knowledge of songs, format the songs titles in the strict
 title as follows:
 '<lead singer's name> - <song name> - <featuring artist name (if any)>'
+if you have any doubt in the name of the song, then DO NOT FORMAT IT.
+always keep the whole name of the song and main artist.
 the output should not contain any other text, just the formatted song names in separate lines
 keep the results baised towards rap in case you have any confusions.
+the output must contain as many songs names as the input
 the maximum length for a song name should be strictly limited to 44 characters
 """
 
-def name_formatter():
+def name_formatter(link):
     answers = []
-    final = query_maker()
+    final = query_maker(link)
 
     for batch in final:
         chat_completion = client.chat.completions.create(
