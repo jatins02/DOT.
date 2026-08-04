@@ -1,6 +1,9 @@
 import os
+from downloader import download_playlist
 
-def query_maker():
+def query_maker(link):
+    download_playlist(link)
+    
     batches = []
     batch = []
     count = 0

@@ -29,7 +29,7 @@ class App(ctk.CTk):
 
         self.frame = ctk.CTkScrollableFrame(self, width=690, height=690)
         self.frame.pack(fill="both", expand=True)
-        self.final = name_formatter()
+        self.final = name_formatter(self.link)
         row = 0
         for song in self.final:
             btn = ctk.CTkButton(self.frame, width=690, text=(song[:50] if len(song)>50 else song))
@@ -51,9 +51,9 @@ class App(ctk.CTk):
         click_type = mouse_names.get(mouse_button, "Unknown Click")
 
         if (click_type == "Left Click"):
-            song = pygame.mixer.Sound(f"downloads/{button_text}/.mp3")
-            song.play(max_time = 6769)
-            pygame.time.wait(7000)
+            song = pygame.mixer.Sound(f"downloads/{button_text}.mp3")
+            song.play(maxtime = 4424)
+            pygame.time.wait(4679)
 
         
         print(f"Button '{button_text}' was clicked using: {click_type}")
