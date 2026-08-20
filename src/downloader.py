@@ -1,6 +1,8 @@
 import yt_dlp
+import os
 
 def download_playlist(playlist_url):
+    os.makedirs("downloads", exist_ok=True)
     ydl_opts = {
         'format': 'bestaudio/best',                         # get the highest quality audio available
         'outtmpl': f'downloads/%(title)s.%(ext)s',          # save path and filename
