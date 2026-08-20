@@ -8,7 +8,8 @@ def query_maker(link):
     batch = []
     count = 0
 
-    for file in os.listdir("downloads"):
+    original_files = sorted(os.listdir("downloads"))
+    for file in original_files:
         batch.append(file)
         count += 1
         if count == 5:
@@ -30,6 +31,6 @@ def query_maker(link):
         tmp = ""
         count = 1
 
-    return final
+    return final, original_files
 
 
