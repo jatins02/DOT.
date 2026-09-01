@@ -12,9 +12,15 @@ class App(ctk.CTk):
         self.grid_columnconfigure(0, weight=1)
         
         pygame.mixer.init()
-        script_path = os.path.abspath(__file__)
-        parent_dir = os.path.dirname(os.path.dirname(script_path))
-        os.chdir(parent_dir)
+        import sys
+        if getattr(sys, 'frozen', False):
+            # Running as compiled executable
+            application_path = os.path.dirname(sys.executable)
+        else:
+            # Running as a script
+            application_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        
+        os.chdir(application_path)
 
         # Main container to hold different views
         self.container = ctk.CTkFrame(self)
