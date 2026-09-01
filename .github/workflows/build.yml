@@ -14,12 +14,17 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
     
+    defaults:
+      run:
+        working-directory: DOT-repo
+    
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
         repository: ${{ github.repository }}
         ref: ${{ github.ref }}
+        path: DOT-repo
 
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -46,7 +51,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: DOT-${{ runner.os }}
-        path: dist/DOT-${{ runner.os }}*
+        path: DOT-repo/dist/DOT-${{ runner.os }}*
 
   release:
     name: Create GitHub Release
@@ -59,6 +64,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+      with:
+        path: DOT-repo
 
     - name: Download Artifacts
       uses: actions/download-artifact@v4
